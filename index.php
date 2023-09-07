@@ -31,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 }
 
+header('Content-Type: application/json');
+
 if($return === true){
     $endpoints = new Endpoints($slack_name, $track, $github_file_url, $github_repo_url);
     echo str_replace("\\", "", $endpoints->get_request_response());
