@@ -3,7 +3,7 @@ require_once "API/index.php";
 
 use API\Endpoints;
 
-$github_file_url = "https://github.com/J-Engineers/HNGX-Task-1/blob/main/API/index.php";
+$github_file_url = "https://github.com/J-Engineers/HNGX-Task-1/blob/main/index.php";
 $github_repo_url = "https://github.com/J-Engineers/HNGX-Task-1";
 
 
