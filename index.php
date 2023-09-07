@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $status_massage = 'The two parameters passed should have at least 1 character as a value each';
         if(strlen($slack_name) > 0 && strlen($track) > 0){
             $return = true;
-            $status_code = 400;
+            $status_code = 200;
             $status_massage = '';
         }
     }
