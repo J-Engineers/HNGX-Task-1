@@ -2,6 +2,8 @@
 
 namespace API;
 
+use DateTime;
+
 class Endpoints
 {
     public string $request_method;
@@ -16,11 +18,16 @@ class Endpoints
         $this->github_file_url = $github_file_url;
         $this->github_repo_url = $github_repo_url;
     }
+    
+    private function validate_date($date, $format){
+        $date_created = DateTime::createFromFormat($format, $date);
+        return $date_created && $date_created->format($format) == $date;
+    }
 
     public function get_request_response(){
 
-        $utc_time = gmdate("Y-m-d\TH:i:s\Z");
-        $current_day = gmdate("l");
+        $utc_time = ($this->validate_date(gmdate("Y-m-d\TH:i:s\Z"), "Y-m-d\TH:i:s\Z") === true)?gmdate("Y-m-d\TH:i:s\Z"):'Date Validation failed';
+        $current_day = ($this->validate_date(gmdate("l"), 'l') === true)?gmdate("l"):'Day Validation failed';
         $status_code = 200;
         $response = array(
             "slack_name"=> $this->slack_name,
